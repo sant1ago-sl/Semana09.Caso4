@@ -1,0 +1,99 @@
+:root {
+    --principal: #334155;
+    --acento: #2563eb;
+    --fondo: #f5f6f8;
+    --borde: #d9dde3;
+    --texto: #1f2937;
+    --gris: #6b7280;
+    --rojo: #b91c1c;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+    background: var(--fondo);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* menu arriba */
+.barra { background: var(--principal); }
+.barra-dentro {
+    max-width: 1100px; margin: 0 auto; padding: 14px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.logo { display: flex; align-items: center; gap: 10px; font-size: 19px; font-weight: 500; color: white; }
+.logo b { font-weight: 600; }
+.logo-icono {
+    background: white; color: var(--principal);
+    width: 32px; height: 32px; border-radius: 6px;
+    display: grid; place-items: center; font-size: 22px; font-weight: 600;
+}
+.menu { display: flex; gap: 4px; flex-wrap: wrap; }
+.menu a {
+    color: #cbd5e1; text-decoration: none; padding: 8px 14px;
+    border-radius: 6px; font-size: 14px;
+}
+.menu a:hover { background: rgba(255,255,255,.1); color: white; }
+.menu a.activo { background: rgba(255,255,255,.15); color: white; }
+
+/* contenido */
+.contenido { flex: 1; width: 100%; max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+.contenido h1 { font-size: 26px; font-weight: 600; margin-bottom: 4px; }
+.subtitulo { color: var(--gris); margin-bottom: 22px; font-size: 14px; }
+
+.caja {
+    background: white; border: 1px solid var(--borde);
+    border-radius: 8px; padding: 22px; margin-bottom: 24px;
+}
+.caja h3 { margin-bottom: 14px; font-size: 17px; font-weight: 600; }
+
+/* formulario */
+.formulario { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; }
+.campo { display: flex; flex-direction: column; gap: 5px; }
+.campo.ancho { grid-column: 1 / -1; }
+.campo label { font-size: 13px; color: var(--gris); }
+.campo input[type=text], .campo input[type=email], .campo input[type=date], .campo select {
+    padding: 9px 11px; border: 1px solid var(--borde); border-radius: 6px;
+    font-family: inherit; font-size: 14px; background: white; color: var(--texto);
+}
+.campo input:focus, .campo select:focus { outline: none; border-color: var(--acento); }
+.campo input.input-validation-error, .campo select.input-validation-error { border-color: var(--rojo); }
+.error, .field-validation-error { color: var(--rojo); font-size: 12px; }
+.check { flex-direction: row; align-items: center; gap: 8px; }
+.check label { color: var(--texto); font-size: 14px; }
+
+/* botones */
+.boton, .boton-claro {
+    font-family: inherit; font-size: 14px; border-radius: 6px; cursor: pointer;
+    text-decoration: none; display: inline-block;
+}
+.boton { background: var(--principal); color: white; border: none; padding: 10px 22px; }
+.boton:hover { background: #1e293b; }
+.boton-claro { background: white; color: var(--principal); border: 1px solid var(--borde); padding: 9px 16px; }
+.boton-claro:hover { background: #eef0f3; }
+.botones-index { display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap; }
+
+/* tabla */
+.tabla { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tabla th { text-align: left; color: var(--gris); font-weight: 500; font-size: 13px; padding: 9px 10px; border-bottom: 1px solid var(--borde); }
+.tabla td { padding: 11px 10px; border-bottom: 1px solid #eceef1; }
+.etiqueta { padding: 2px 9px; border-radius: 4px; font-size: 12px; }
+.si { background: #e0e7ff; color: #3730a3; }
+.no { background: #eceef1; color: var(--gris); }
+.enlace { color: var(--acento); text-decoration: none; }
+.enlace:hover { text-decoration: underline; }
+.vacio { color: var(--gris); text-align: center; padding: 18px; }
+
+.dato { padding: 10px 0; border-bottom: 1px solid #eceef1; }
+.dato span { color: var(--gris); font-size: 12px; display: block; }
+
+.pie { text-align: center; color: var(--gris); font-size: 12px; padding: 16px; }
+
+@media (max-width: 800px) {
+    .formulario { grid-template-columns: 1fr; }
+    .tabla { display: block; overflow-x: auto; }
+}

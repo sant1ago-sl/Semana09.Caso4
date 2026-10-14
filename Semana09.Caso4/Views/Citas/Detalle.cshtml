@@ -1,0 +1,15 @@
+@model Cita
+@{ ViewData["Title"] = "Detalle"; }
+
+<h1>Cita #@Model.Id</h1>
+<p class="subtitulo">Datos de la cita registrada.</p>
+
+<div class="caja">
+    <div class="dato"><span>Paciente</span>@Model.Paciente</div>
+    <div class="dato"><span>Correo</span>@Model.Correo</div>
+    <div class="dato"><span>Especialidad</span>@Model.Especialidad</div>
+    <div class="dato"><span>Fecha</span>@Model.Fecha.ToShortDateString()</div>
+    <div class="dato"><span>Primera vez</span>@(Model.PrimeraVez ? "Si" : "No")</div>
+    <br />
+    <a class="boton-claro" asp-action="Index">Volver</a>
+</div>

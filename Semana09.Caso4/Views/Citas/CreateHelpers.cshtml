@@ -1,0 +1,45 @@
+@model Cita
+@{ ViewData["Title"] = "Nueva cita (Helpers)"; }
+
+<h1>Nueva cita</h1>
+<p class="subtitulo">Formulario hecho con HTML Helpers.</p>
+
+<div class="caja">
+@using (Html.BeginForm("Guardar", "Citas", FormMethod.Post, new { @class = "formulario" }))
+{
+    @Html.Hidden("vista", "CreateHelpers")
+
+    <div class="campo">
+        @Html.LabelFor(m => m.Paciente)
+        @Html.TextBoxFor(m => m.Paciente)
+        @Html.ValidationMessageFor(m => m.Paciente, "", new { @class = "error" })
+    </div>
+    <div class="campo">
+        @Html.LabelFor(m => m.Correo)
+        @Html.TextBoxFor(m => m.Correo)
+        @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "error" })
+    </div>
+    <div class="campo">
+        @Html.LabelFor(m => m.Especialidad)
+        @Html.DropDownListFor(m => m.Especialidad, (SelectList)ViewBag.Especialidades, "-- elige --")
+        @Html.ValidationMessageFor(m => m.Especialidad, "", new { @class = "error" })
+    </div>
+    <div class="campo">
+        @Html.LabelFor(m => m.Fecha)
+        @Html.TextBoxFor(m => m.Fecha, "{0:yyyy-MM-dd}", new { type = "date" })
+    </div>
+    <div class="campo check ancho">
+        @Html.CheckBoxFor(m => m.PrimeraVez)
+        @Html.LabelFor(m => m.PrimeraVez)
+    </div>
+    <div class="campo ancho">
+        <button type="submit" class="boton">Guardar cita</button>
+    </div>
+}
+</div>
+
+<partial name="_Lista" model="(List<Cita>)ViewBag.Citas" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

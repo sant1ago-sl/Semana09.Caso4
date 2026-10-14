@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Clinica Vida</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" />
+    <link rel="stylesheet" href="~/css/estilo.css" asp-append-version="true" />
+</head>
+<body>
+    @{ var accion = ViewContext.RouteData.Values["action"]?.ToString(); }
+    <header class="barra">
+        <div class="barra-dentro">
+            <div class="logo">
+                <span class="logo-icono">+</span>
+                <span>Clinica <b>Vida</b></span>
+            </div>
+            <nav class="menu">
+                <a asp-controller="Citas" asp-action="Index" class="@(accion == "Index" ? "activo" : "")">Mis citas</a>
+                <a asp-controller="Citas" asp-action="CreateHelpers" class="@(accion == "CreateHelpers" ? "activo" : "")">Nueva cita - Helpers</a>
+                <a asp-controller="Citas" asp-action="CreateTagHelpers" class="@(accion == "CreateTagHelpers" ? "activo" : "")">Nueva cita - Tag Helpers</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="contenido">
+        @RenderBody()
+    </main>
+
+    <footer class="pie">Semana 09 - Caso 4</footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,46 @@
+@model Cita
+@{ ViewData["Title"] = "Nueva cita (Tag Helpers)"; }
+
+<h1>Nueva cita</h1>
+<p class="subtitulo">Formulario hecho con Tag Helpers.</p>
+
+<div class="caja">
+    <form asp-action="Guardar" method="post" class="formulario">
+        <input type="hidden" name="vista" value="CreateTagHelpers" />
+
+        <div class="campo">
+            <label asp-for="Paciente"></label>
+            <input asp-for="Paciente" />
+            <span asp-validation-for="Paciente" class="error"></span>
+        </div>
+        <div class="campo">
+            <label asp-for="Correo"></label>
+            <input asp-for="Correo" />
+            <span asp-validation-for="Correo" class="error"></span>
+        </div>
+        <div class="campo">
+            <label asp-for="Especialidad"></label>
+            <select asp-for="Especialidad" asp-items="(SelectList)ViewBag.Especialidades">
+                <option value="">-- elige --</option>
+            </select>
+            <span asp-validation-for="Especialidad" class="error"></span>
+        </div>
+        <div class="campo">
+            <label asp-for="Fecha"></label>
+            <input asp-for="Fecha" />
+        </div>
+        <div class="campo check ancho">
+            <input asp-for="PrimeraVez" />
+            <label asp-for="PrimeraVez"></label>
+        </div>
+        <div class="campo ancho">
+            <button type="submit" class="boton">Guardar cita</button>
+        </div>
+    </form>
+</div>
+
+<partial name="_Lista" model="(List<Cita>)ViewBag.Citas" />
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

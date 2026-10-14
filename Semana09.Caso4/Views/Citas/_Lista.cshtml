@@ -1,0 +1,29 @@
+@model List<Cita>
+
+<div class="caja">
+    <h3>Citas registradas</h3>
+    @if (Model.Count == 0)
+    {
+        <p class="vacio">Todavia no hay citas registradas.</p>
+    }
+    else
+    {
+        <table class="tabla">
+            <tr>
+                <th>Paciente</th><th>Correo</th><th>Especialidad</th><th>Fecha</th><th>Primera vez</th><th>Html.ActionLink</th><th>Tag helper</th>
+            </tr>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Paciente</td>
+                    <td>@c.Correo</td>
+                    <td>@c.Especialidad</td>
+                    <td>@c.Fecha.ToShortDateString()</td>
+                    <td><span class="etiqueta @(c.PrimeraVez ? "si" : "no")">@(c.PrimeraVez ? "Si" : "No")</span></td>
+                    <td>@Html.ActionLink("Ver detalle", "Detalle", "Citas", new { id = c.Id }, new { @class = "enlace" })</td>
+                    <td><a class="enlace" asp-controller="Citas" asp-action="Detalle" asp-route-id="@c.Id">Ver detalle</a></td>
+                </tr>
+            }
+        </table>
+    }
+</div>

@@ -1,0 +1,12 @@
+@model List<Cita>
+@{ ViewData["Title"] = "Citas"; }
+
+<h1>Citas medicas</h1>
+<p class="subtitulo">Registra y revisa las citas de los pacientes.</p>
+
+<div class="botones-index">
+    <a class="boton-claro" asp-action="CreateHelpers">+ Formulario con HTML Helpers</a>
+    <a class="boton-claro" asp-action="CreateTagHelpers">+ Formulario con Tag Helpers</a>
+</div>
+
+<partial name="_Lista" model="Model" />
